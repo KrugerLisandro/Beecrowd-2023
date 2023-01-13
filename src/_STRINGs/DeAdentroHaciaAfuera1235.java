@@ -40,7 +40,7 @@ Salida
 Cada línea de entrada debe producir una línea de salida, con el mensaje decodificado, 
 como el ejemplo anterior.*/
     public static void main(String[] args) {
-        
+
         Scanner leer = new Scanner(System.in);
 
         int n = leer.nextInt();
@@ -50,6 +50,7 @@ como el ejemplo anterior.*/
         for (int i = 0; i < n; i++) {
             cadena[i] = leer.nextLine();
             cadena[i] = descifrador(cadena[i]);
+            //cadena[i] = descifrador2(cadena[i]); // 2DA VERSION
         }
 
         for (int i = 0; i < n; i++) {
@@ -60,7 +61,7 @@ como el ejemplo anterior.*/
 
     static String descifrador(String cadena) {
 
-        int mitadCadena = (cadena.length()/2);
+        int mitadCadena = (cadena.length() / 2);
         StringBuilder newCadena = new StringBuilder();
 
         for (int i = mitadCadena - 1; i >= 0; i--) {
@@ -72,6 +73,15 @@ como el ejemplo anterior.*/
         }
 
         return String.valueOf(newCadena);
+    }
+
+    static String descifrador2(String cadena){
+        
+        StringBuilder parte1 = new StringBuilder(cadena.substring(0, cadena.length() / 2));
+        StringBuilder parte2 = new StringBuilder(cadena.substring(cadena.length() / 2, cadena.length()));
+        parte1.reverse();
+        parte2.reverse();
+        return (parte1.toString() + parte2.toString());
     }
 
 }
